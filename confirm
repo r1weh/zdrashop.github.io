@@ -1,0 +1,27 @@
+
+<font color="black">Data Pesanan <hr>Harga : Rp 0 <br>Metode Pembayaran :  <br><hr>
+Note : Harga belum termasuk biaya admin
+<br><br>
+</font>
+<input type="button" value="Beli Sekarang" id="ordercuy" class="btn btn-success float-right">
+
+<script>
+$('#ordercuy').click(function() {
+    var required = $('input,textarea,select').filter('[required]:visible');
+    var allRequired = true;
+    required.each(function() {
+        if ($(this).val() == '') {
+            allRequired = false;
+        }
+    });
+
+    if (!allRequired) {
+        alertify.set('notifier', 'position', 'top-center');
+        alertify.error('Mohon isi semua');
+    } else {
+        $("#ordercuy").prop('disabled', true);
+        $("#ordercuy").val('Please Wait');
+        $('form').submit();
+    }
+});
+</script>
